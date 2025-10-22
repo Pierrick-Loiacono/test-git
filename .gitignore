@@ -1,0 +1,8 @@
+.env*
+*.log
+vendor/
+/cache/
+*.tmp
+
+
+
