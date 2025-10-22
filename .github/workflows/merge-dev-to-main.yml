@@ -1,4 +1,4 @@
-name: Merge dev → main
+name: Merge dev dans main
 
 on:
   push:
@@ -8,14 +8,13 @@ on:
     branches:
       - dev
     types:
-      - closed  # quand une PR vers dev est mergée
+      - closed
 
 permissions:
-  contents: write  # permet de pousser le merge
+  contents: write
 
 jobs:
   merge-to-main:
-    # ✅ Ne s'exécute que si le push est sur dev ou si la PR est mergeée
     if: github.event.pull_request.merged == true || github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
 
@@ -23,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # important pour pouvoir merger
+          fetch-depth: 0 
 
       - name: Configure Git
         run: |

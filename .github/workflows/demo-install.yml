@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # actions permet d'effectuer une tache, comme une installation
+      # v4 c'est la version du module fourni par github, comme un dépot
+      - name: Clone le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installe les dépendances
+        run: npm install
+
+      - name: Lance les tests
+        run: npm test
